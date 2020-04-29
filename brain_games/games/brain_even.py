@@ -14,9 +14,11 @@ def brain_even(user_name):
     Args:
         user_name: The name of user.
     """
+    answer = ''
+    correct_answer = ''
     req_correct = 3
     correct_answers = 0
-    while True:
+    while correct_answers != 3 and answer == correct_answer:
         number = randint(1, 100)
         if number % 2 == 0:
             correct_answer = 'yes'
@@ -25,12 +27,10 @@ def brain_even(user_name):
         print('Question: {0}'.format(number))
         answer = prompt.string('Your answer: ')
         if answer == correct_answer:
-            correct_answers += 1
             print('Correct!')
-        else:
-            print("'{0}' is wrong answer ;(. Correct answer was '{1}'.".format(answer, correct_answer))
-            print("Let's try again, {0}!".format(user_name))
-            break
-        if correct_answers == req_correct:
-            print('Congratulations, {0}!'.format(user_name))
-            break
+            correct_answers += 1
+    if correct_answers == req_correct:
+        print('Congratulations, {0}!'.format(user_name))
+    else:
+        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(answer, correct_answer))
+        print("Let's try again, {0}!".format(user_name))
