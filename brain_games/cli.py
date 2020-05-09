@@ -6,10 +6,10 @@ import prompt
 
 
 def welcome_user():
-    """User Greetings. Returns a string.
+    """User Greetings.
 
-    # noqa: DAR201
-
+    Returns:
+        Username.
     """
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!\n'.format(name))
