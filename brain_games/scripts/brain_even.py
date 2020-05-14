@@ -3,16 +3,13 @@
 """Main script."""
 
 
-from brain_games.cli import welcome_user
-from brain_games.games.brain_even import brain_even
+from brain_games.engine import run
+from brain_games.games import brain_even
 
 
 def main():
-    """Start brain even game."""
-    print('\nWelcome to the Brain Games!')
-    print('Answer "yes" if number even otherwise answer "no".\n')
-    name = welcome_user()
-    brain_even(name)
+    """Start brain_even game."""
+    run(brain_even)
 
 
 if __name__ == '__main__':

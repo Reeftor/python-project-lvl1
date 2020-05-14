@@ -4,7 +4,7 @@
 
 from random import randint
 
-import prompt
+GAME_DESCR = 'What number is missing in the progression?'
 
 
 def generate_progression():
@@ -22,7 +22,7 @@ def generate_progression():
     for pos in range(length):
         if pos == pos_to_hide:
             num_to_hide = str(num)
-            progression += ' {0}'.format(' ..')
+            progression += ' {0}'.format('..')
         else:
             progression += ' {0}'.format(num)
         num += step
@@ -31,26 +31,12 @@ def generate_progression():
     return (progression, num_to_hide)
 
 
-def brain_progression(user_name):
+def make_question():
     """Brain_progression game function.
 
-    Args:
-        user_name: The name of user.
+    Returns:
+        question, correct_answer
     """
-    answer = ''
-    correct_answer = ''
-    req_correct = 3
-    correct_answers = 0
-
-    while correct_answers != 3 and answer == correct_answer:
-        progression, correct_answer = generate_progression()
-        print('Question: {0}'.format(progression))
-        answer = prompt.string('Your answer: ')
-        if answer == correct_answer:
-            print('Correct!')
-            correct_answers += 1
-    if correct_answers == req_correct:
-        print('Congratulations, {0}!'.format(user_name))
-    else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(answer, correct_answer))
-        print("Let's try again, {0}!".format(user_name))
+    progression, correct_answer = generate_progression()
+    question = 'Question: {0}'.format(progression)
+    return question, correct_answer

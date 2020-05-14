@@ -3,13 +3,12 @@
 """Main script."""
 
 
-from brain_games.cli import welcome_user
+from brain_games.engine import run
 
 
 def main():
-    """Start main func."""
-    print('Welcome to the Brain Games!')
-    welcome_user()
+    """Start brain_games."""
+    run()
 
 
 if __name__ == '__main__':

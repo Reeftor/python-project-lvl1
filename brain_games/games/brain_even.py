@@ -5,32 +5,19 @@
 
 from random import randint
 
-import prompt
+GAME_DESCR = 'Answer "yes" if number even otherwise answer "no".'
 
 
-def brain_even(user_name):
+def make_question():
     """Brain_even game function.
 
-    Args:
-        user_name: The name of user.
+    Returns:
+        question, correct_answer
     """
-    answer = ''
-    correct_answer = ''
-    req_correct = 3
-    correct_answers = 0
-    while correct_answers != 3 and answer == correct_answer:
-        number = randint(1, 100)
-        if number % 2 == 0:
-            correct_answer = 'yes'
-        else:
-            correct_answer = 'no'
-        print('Question: {0}'.format(number))
-        answer = prompt.string('Your answer: ')
-        if answer == correct_answer:
-            print('Correct!')
-            correct_answers += 1
-    if correct_answers == req_correct:
-        print('Congratulations, {0}!'.format(user_name))
+    num = randint(1, 100)
+    if num % 2 == 0:
+        correct_answer = 'yes'
     else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(answer, correct_answer))
-        print("Let's try again, {0}!".format(user_name))
+        correct_answer = 'no'
+    question = 'Question: {0}'.format(num)
+    return question, correct_answer

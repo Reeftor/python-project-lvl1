@@ -1,16 +1,25 @@
 # -*- coding: utf-8 -*-
 
-"""Functions module."""
+"""CLI Functions module."""
 
 import prompt
 
 
-def welcome_user():
-    """User Greetings.
+def get_username():
+    """Get username.
 
     Returns:
         Username.
     """
     name = prompt.string('May I have your name? ')
-    print('Hello, {0}!\n'.format(name))
     return name
+
+
+def get_answer():
+    """Get user answer.
+
+    Returns:
+        User answer
+    """
+    user_answer = prompt.string('Your answer: ')
+    return user_answer
