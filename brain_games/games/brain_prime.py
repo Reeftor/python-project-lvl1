@@ -13,17 +13,16 @@ def isprimenum():
     Returns:
         Generated number, isPrime number (str)
     """
-    num = randint(0, 100)
     prime = 'yes'
-    if num > 1:
-        numbers = 2  # div num / numbers from 2 to numbers
-        while prime == 'yes' and numbers < num:
-            if num % numbers == 0:
-                prime = 'no'
-            numbers += 1
-    else:
+    num = randint(0, 100)
+    if num <= 1:
         prime = 'no'
-    return (num, prime)
+        return num, prime
+    for numbers in range(2, num):
+        if num % numbers == 0:
+            prime = 'no'
+            return num, prime
+    return num, prime
 
 
 def make_question():
