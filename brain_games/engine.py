@@ -4,7 +4,7 @@
 
 from brain_games.cli import get_answer, get_username
 
-correct_answers_required = 3
+CORRECT_ANSWERS_REQUIRED = 3
 
 
 def welcome_user():
@@ -47,9 +47,22 @@ def gameprocess(user_name, gamefuncs):
         gamefuncs: game function that returns question
         and correct answer
     """
+    rezult = qac(gamefuncs)
+    final_msg(user_name, rezult)
+
+
+def qac(gamefuncs):
+    """Question-Answer Cycle.
+
+    Args:
+        gamefuncs: see gameprocess function
+
+    Returns:
+        True if user gives correct answers of all questions,
+        False if user give at least one wrong answer.
+    """
     correct_answers = 0
-    iscorrect = True
-    while correct_answers != 3 and iscorrect:
+    while correct_answers != CORRECT_ANSWERS_REQUIRED:
         question, correct_answer = gamefuncs()
         print(question)
         answer = get_answer()
@@ -57,9 +70,19 @@ def gameprocess(user_name, gamefuncs):
             print('Correct!')
             correct_answers += 1
         else:
-            iscorrect = False
-    if correct_answers == correct_answers_required:
+            print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(answer, correct_answer))
+            return False
+    return True
+
+
+def final_msg(user_name, rezult):
+    """Gen final message of game depends on rezult.
+
+    Args:
+        user_name: see gameprocess() args.
+        rezult: bool, see True if user win, Flase if else.
+    """
+    if rezult:
         print('Congratulations, {0}!'.format(user_name))
     else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(answer, correct_answer))
         print("Let's try again, {0}!".format(user_name))
