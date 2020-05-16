@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "Reeftor_brain_games"
 version = "0.5.2"
-description = ""
+description = "Hexlet.io brain games python project"
 authors = ["Reeftor <dll1993@bk.ru>"]
+repository =  "https://github.com/Reeftor/python-project-lvl1"
+classifiers = [
+    "Topic :: Education"
+]
 packages = [
     { include = "brain_games" },
 ]
